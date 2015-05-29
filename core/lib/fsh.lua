@@ -56,8 +56,3 @@ function resolveLinks(path)
 		return resolveLinks(resolved)
 	end
 end
-
---mount("OmniOS/Programs/FileX.app","disk1")
---mount("disk1","OmniOS/API")
---print(resolveLinks("OmniOS/Programs/FileX.app/Data/coo"))
---print(textutils.serialize(mounts))
