@@ -26,7 +26,7 @@ function Internal.makeTable(path,tabl)
 	end
 end
 
-function mount(destination,source)
+function fsh.mount(destination,source)
 	if not fs.exists(destination) then fs.makeDir(destination) end
 	if not fs.exists(source) then fs.makeDir(source) end
 	local tabl, dir = Internal.makeTable(destination,mounts)
@@ -48,11 +48,13 @@ function Internal.resolveLinks(path,tabl)
 	return false
 end
 
-function resolveLinks(path)
+function fsh.resolveLinks(path)
 	resolved = Internal.resolveLinks(path,mounts)
 	if resolved == false then
 		return path
 	else
-		return resolveLinks(resolved)
+		return fsh.resolveLinks(resolved)
 	end
 end
+
+return fsh
